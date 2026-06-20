@@ -11,6 +11,8 @@ use MsgHub\Resources\MessageResource;
 use MsgHub\Resources\TemplateResource;
 
 /**
+ * @method static bool   ping()
+ * @method static array  health()
  * @method static array  send(string $to, string $text = '', ?string $mediaUrl = null)
  * @method static string upload(string $filePath)
  * @method static string uploadContents(mixed $contents, string $filename, string $mimeType = 'application/octet-stream')

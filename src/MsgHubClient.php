@@ -38,6 +38,40 @@ class MsgHubClient
     }
 
     // -------------------------------------------------------------------------
+    // Health check
+    // -------------------------------------------------------------------------
+
+    /**
+     * Verifica se o MsgHub está acessível e saudável.
+     * Não requer autenticação — útil antes de disparar envios em massa.
+     *
+     * @return bool  true se status = "ok"
+     */
+    public function ping(): bool
+    {
+        try {
+            $response = $this->http->get('health');
+            $data     = json_decode((string) $response->getBody(), true);
+            return ($data['status'] ?? '') === 'ok';
+        } catch (\Throwable) {
+            return false;
+        }
+    }
+
+    /**
+     * Retorna o payload completo do health check.
+     */
+    public function health(): array
+    {
+        try {
+            $response = $this->http->get('health');
+            return json_decode((string) $response->getBody(), true) ?? [];
+        } catch (\Throwable) {
+            return ['status' => 'unreachable'];
+        }
+    }
+
+    // -------------------------------------------------------------------------
     // Atalhos para o uso mais comum
     // -------------------------------------------------------------------------
 
