@@ -1,0 +1,29 @@
+{
+    "name": "msghub/sdk",
+    "description": "SDK PHP oficial do MsgHub — integração com WhatsApp via Evolution API",
+    "type": "library",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "suggest": {
+        "illuminate/support": "Necessário para a integração com Laravel (Service Provider e Facade)"
+    },
+    "autoload": {
+        "psr-4": {
+            "MsgHub\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MsgHub\\Laravel\\MsgHubServiceProvider"
+            ],
+            "aliases": {
+                "MsgHub": "MsgHub\\Laravel\\Facades\\MsgHub"
+            }
+        }
+    },
+    "minimum-stability": "stable"
+}
