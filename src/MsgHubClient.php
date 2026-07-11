@@ -19,9 +19,13 @@ class MsgHubClient
     private ContactResource    $contactResource;
     private TemplateResource   $templateResource;
 
-    public function __construct(string $baseUrl, string $apiKey, int $timeout = 30)
+    /**
+     * @param  Client|null  $httpClient  Cliente Guzzle pré-configurado (ex: com um MockHandler
+     *                                   para testes). Se omitido, um cliente real é criado.
+     */
+    public function __construct(string $baseUrl, string $apiKey, int $timeout = 30, ?Client $httpClient = null)
     {
-        $this->http = new Client([
+        $this->http = $httpClient ?? new Client([
             'base_uri' => rtrim($baseUrl, '/') . '/api/v1/',
             'headers'  => [
                 'Authorization' => 'Bearer ' . $apiKey,
