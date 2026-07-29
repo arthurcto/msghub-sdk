@@ -26,7 +26,7 @@ class ConnectionResource extends BaseResource
     }
 
     /** Remove a conexão atual. */
-    public function delete(): array
+    public function disconnect(): array
     {
         return $this->delete('connection');
     }
