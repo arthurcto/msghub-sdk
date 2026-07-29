@@ -28,7 +28,7 @@ class TemplateResource extends BaseResource
     }
 
     /** Remove um template. */
-    public function delete(int $id): array
+    public function remove(int $id): array
     {
         return $this->delete("templates/{$id}");
     }

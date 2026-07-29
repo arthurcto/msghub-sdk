@@ -49,7 +49,7 @@ class ContactResource extends BaseResource
     }
 
     /** Remove um contato. */
-    public function delete(int $id): array
+    public function remove(int $id): array
     {
         return $this->delete("contacts/{$id}");
     }
